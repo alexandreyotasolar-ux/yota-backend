@@ -6,6 +6,7 @@ const connectDB  = require('./config/database');
 const userRoutes     = require('./routes/users');
 const proposalRoutes = require('./routes/proposals');
 const contractRoutes = require('./routes/contracts');
+const settingsRoutes = require('./routes/settings');
 
 const app  = express();
 const PORT = process.env.PORT || 3001;
@@ -30,7 +31,7 @@ if (process.env.NODE_ENV !== 'production') {
 app.use('/api', userRoutes);
 app.use('/api/proposals', proposalRoutes);
 app.use('/api/contracts', contractRoutes);
-
+app.use('/api/settings', settingsRoutes);
 // ── Health check ─────────────────────────────────────────────
 app.get('/health', (_req, res) => res.json({
   status: 'ok',
